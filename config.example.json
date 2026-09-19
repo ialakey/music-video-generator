@@ -1,0 +1,74 @@
+{
+  "audio_file": "examples/demo.wav",
+  "output": "output/video.mp4",
+  "preset": "aesthetic",
+
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "crf": 20,
+    "preset": "medium"
+  },
+
+  "audio": {
+    "speed": 0.88,
+    "reverb": 0.35,
+    "reverb_room": 480,
+    "bass_boost": 2.0,
+    "normalize": true,
+    "fade_in": 1.0,
+    "fade_out": 3.0
+  },
+
+  "background": {
+    "image": "examples/demo.jpg",
+    "blur": 22.0,
+    "brightness": 0.5,
+    "zoom": 1.14,
+    "beat_zoom": 0.018,
+    "shake": 3.0,
+    "grain": 0.045
+  },
+
+  "cover": {
+    "enabled": true,
+    "shape": "circle",
+    "size": 440,
+    "position": [0.5, 0.44],
+    "beat_scale": 0.03,
+    "spin": 0.0
+  },
+
+  "visualizer": {
+    "style": "circle",
+    "radius": 262.0,
+    "amplitude": 150.0,
+    "thickness": 6.0,
+    "center": [0.5, 0.44],
+    "color": "#ffffff",
+    "color2": "#a78bfa",
+    "glow": 18.0,
+    "mirror": true
+  },
+
+  "text": {
+    "title": { "text": "Название трека", "size": 64, "position": [0.5, 0.70] },
+    "artist": { "text": "Исполнитель", "size": 34, "position": [0.5, 0.762] },
+    "extra": []
+  },
+
+  "progress": {
+    "enabled": true,
+    "position": [0.5, 0.855],
+    "width": 0.42,
+    "timecodes": true
+  },
+
+  "overlay": {
+    "vignette": 0.6,
+    "beat_flash": 0.05,
+    "fade_in": 1.2,
+    "fade_out": 2.5
+  }
+}

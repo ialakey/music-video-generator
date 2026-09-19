@@ -1,0 +1,40 @@
+# Окружение и байт-код
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Тесты и кэши
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Результаты рендера. Шаблон именно `output/*`: файл внутри игнорируемой
+# папки разыгнорировать нельзя, git туда даже не заглядывает.
+output/*
+!output/.gitkeep
+*.mp4
+*.mkv
+*.mov
+!docs/*.mp4
+
+# Свои шрифты: лицензии у всех разные, в репозиторий их класть нельзя
+assets/fonts/*
+!assets/fonts/.gitkeep
+
+# Настройки IDE и ОС
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Личные заметки и черновики
+task.txt
+*.local.json

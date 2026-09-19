@@ -1,0 +1,13 @@
+# В репозитории всегда LF, в рабочей копии — как принято в системе.
+* text=auto eol=lf
+
+# Бинарники не трогать
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.wav binary
+*.mp3 binary
+*.mp4 binary
+*.ttf binary
+*.otf binary
