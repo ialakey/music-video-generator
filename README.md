@@ -213,7 +213,8 @@ only:
 
 ![the same crop with and without grain](docs/grain-on-off.png)
 
-*The same crop, 1:1 pixels. Barely a texture — and thirteen times the file.*
+*The same crop, shown at original scale with no zoom. Barely a texture —
+and thirteen times the file.*
 
 Grain is the single most expensive thing in the frame: it multiplies the file
 by thirteen. That is why it is generated in 2-pixel blocks by default — it
