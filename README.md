@@ -200,25 +200,43 @@ your own `.ttf` there and name the file:
 ## File size: grain is what matters
 
 Film grain is random noise, and the codec cannot predict it from one frame to
-the next. Measured on the demo clip (1080p/30, CRF 21, the same 6 seconds):
+the next, so it pays for it again on every single frame. Measured on the demo
+clip — 1080p/30, CRF 21, `aesthetic` preset, the same 6 seconds, video stream
+only:
 
-| Setting | Bitrate | Size for a three-minute track |
-|---------|--------:|------------------------------:|
-| `grain: 0` (off)             |  1.9 Mbit/s | ~43 MB |
-| `grain_size: 2` (default)    | 24 Mbit/s   | ~540 MB |
-| `grain_size: 1` (per-pixel)  | 63 Mbit/s   | ~1.4 GB |
+| Setting | Bitrate | Three-minute track | vs. no grain |
+|---------|--------:|-------------------:|-------------:|
+| `grain: 0` (off)              |  1.7 Mbit/s | 36 MB   | — |
+| `grain_size: 4`               | 14.8 Mbit/s | 317 MB  | ×8.8 |
+| `grain_size: 2` (default)     | 22.0 Mbit/s | 472 MB  | ×13.0 |
+| `grain_size: 1` (per-pixel)   | 56.4 Mbit/s | 1210 MB | ×33.4 |
 
-That is why grain is generated in 2-pixel blocks by default: it looks like film
-rather than digital noise, and costs three times less. If the file is still too
-big:
+Grain is the single most expensive thing in the frame: it multiplies the file
+by thirteen. That is why it is generated in 2-pixel blocks by default — it
+looks like film rather than digital noise, and costs 2.6× less than per-pixel
+noise.
+
+CRF on the same grainy picture, with VMAF measured against a lossless master:
+
+| CRF | Bitrate | Three-minute track | VMAF |
+|-----|--------:|-------------------:|-----:|
+| 18  | 33.8 Mbit/s | 725 MB | 97.6 |
+| 21 (default) | 22.0 Mbit/s | 472 MB | 95.0 |
+| 23  | 15.2 Mbit/s | 326 MB | 93.0 |
+| 26  |  6.8 Mbit/s | 146 MB | 89.4 |
+
+CRF 18 costs 1.5× the size of CRF 21 for 2.6 VMAF points — which is why 21 is
+the default. If the file is still too big:
 
 ```bash
 python -m musicvideo track.mp3 -i art.jpg --grain 0      # no grain at all
 python -m musicvideo track.mp3 -i art.jpg --crf 23       # stronger compression
 ```
 
-On a grainy picture CRF 18 triples the file compared to CRF 21 with no visible
-difference — which is why 21 is the default.
+Grain is also the content type where a modern codec pulls furthest ahead. At a
+matched VMAF of ~93, the same clip needs 15.2 Mbit/s with x264 but only
+4.4 Mbit/s with AV1 — 3.5× less. The default stays x264 because it plays
+everywhere and encodes in seconds rather than minutes.
 
 ## Performance
 
