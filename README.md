@@ -241,8 +241,9 @@ everywhere and encodes in seconds rather than minutes.
 ## Performance
 
 Rendering runs in several processes (`--workers`; by default, one less than the
-number of cores). Rule of thumb for 1080p/30: roughly 4–7 minutes for a
-three-minute track on 8 cores. What speeds it up:
+number of cores). Measured on the demo clip: 702 frames of 1080p/30 with grain
+on, 8 cores / 7 workers — 76 seconds, or 9.2 frames per second. That puts a
+three-minute track at roughly ten minutes. What speeds it up:
 
 - `--fps 24` instead of 30;
 - `--size 1280x720` for drafts;
