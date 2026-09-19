@@ -211,10 +211,19 @@ only:
 | `grain_size: 2` (default)     | 22.0 Mbit/s | 472 MB  | ×13.0 |
 | `grain_size: 1` (per-pixel)   | 56.4 Mbit/s | 1210 MB | ×33.4 |
 
+![the same crop with and without grain](docs/grain-on-off.png)
+
+*The same crop, 1:1 pixels. Barely a texture — and thirteen times the file.*
+
 Grain is the single most expensive thing in the frame: it multiplies the file
 by thirteen. That is why it is generated in 2-pixel blocks by default — it
 looks like film rather than digital noise, and costs 2.6× less than per-pixel
 noise.
+
+![2-pixel blocks against per-pixel noise](docs/grain-block-size.png)
+
+*Left: noise generated at half resolution and scaled up. Right: per-pixel.
+Hard to tell apart, 2.6× apart in bitrate.*
 
 CRF on the same grainy picture, with VMAF measured against a lossless master:
 
